@@ -9,5 +9,3 @@ if spec is None or spec.loader is None:
 module = module_from_spec(spec)
 spec.loader.exec_module(module)
 app = module.app
-
-
