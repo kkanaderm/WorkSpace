@@ -1,0 +1,577 @@
+{
+  "info": {
+    "_postman_id": "f2c14c95-8f11-4a4b-b7de-61c951bde001",
+    "name": "BillPayment All Cases",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": "Collection for BillPayment/Lookup mock scenarios in app.py"
+  },
+  "variable": [
+    {
+      "key": "baseUrl",
+      "value": "https://api-billp-test.onrender.com"
+    },
+    {
+      "key": "transactionDateTime",
+      "value": "2026-06-11T10:33:18.450+07:00"
+    }
+  ],
+  "item": [
+    {
+      "name": "Inquiry",
+      "item": [
+        {
+          "name": "Inquiry Success",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"functionName\": \"BillLookup\",\n  \"transactionId\": \"TXN-INQ-0001\",\n  \"transactionDateTime\": \"{{transactionDateTime}}\",\n  \"billerType\": \"\",\n  \"billerId\": \"98499\",\n  \"terminalNo\": \"xxxxxxx8888\",\n  \"channelCode\": \"MOB\",\n  \"tranAmount\": \"120.00\",\n  \"senderBankCode\": \"Kbank\",\n  \"reference1\": \"300000025751\",\n  \"reference2\": \"1733084\",\n  \"language\": \"EN\",\n  \"apiKey\": \"SecureKey123\"\n}"
+            },
+            "url": {
+              "raw": "{{baseUrl}}/v1/billpayment/lookup",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "v1",
+                "billpayment",
+                "lookup"
+              ]
+            }
+          }
+        },
+        {
+          "name": "Inquiry Already Paid",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"functionName\": \"BillLookup\",\n  \"transactionId\": \"TXN-INQ-0002\",\n  \"transactionDateTime\": \"{{transactionDateTime}}\",\n  \"billerType\": \"\",\n  \"billerId\": \"98499\",\n  \"terminalNo\": \"xxxxxxx8888\",\n  \"channelCode\": \"MOB\",\n  \"tranAmount\": \"120.00\",\n  \"senderBankCode\": \"Kbank\",\n  \"reference1\": \"300000025753\",\n  \"reference2\": \"1733086\",\n  \"language\": \"EN\",\n  \"apiKey\": \"SecureKey123\"\n}"
+            },
+            "url": {
+              "raw": "{{baseUrl}}/v1/billpayment/lookup",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "v1",
+                "billpayment",
+                "lookup"
+              ]
+            }
+          }
+        },
+        {
+          "name": "Inquiry Invalid Reference 1",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"functionName\": \"BillLookup\",\n  \"transactionId\": \"TXN-INQ-0003\",\n  \"transactionDateTime\": \"{{transactionDateTime}}\",\n  \"billerType\": \"\",\n  \"billerId\": \"98499\",\n  \"terminalNo\": \"xxxxxxx8888\",\n  \"channelCode\": \"MOB\",\n  \"tranAmount\": \"120.00\",\n  \"senderBankCode\": \"Kbank\",\n  \"reference1\": \"INVALID_REF1\",\n  \"reference2\": \"1733084\",\n  \"language\": \"EN\",\n  \"apiKey\": \"SecureKey123\"\n}"
+            },
+            "url": {
+              "raw": "{{baseUrl}}/v1/billpayment/lookup",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "v1",
+                "billpayment",
+                "lookup"
+              ]
+            }
+          }
+        },
+        {
+          "name": "Inquiry Invalid Reference 1 and 2",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"functionName\": \"BillLookup\",\n  \"transactionId\": \"TXN-INQ-0004\",\n  \"transactionDateTime\": \"{{transactionDateTime}}\",\n  \"billerType\": \"\",\n  \"billerId\": \"98499\",\n  \"terminalNo\": \"xxxxxxx8888\",\n  \"channelCode\": \"MOB\",\n  \"tranAmount\": \"120.00\",\n  \"senderBankCode\": \"Kbank\",\n  \"reference1\": \"INVALID_REF12\",\n  \"reference2\": \"X\",\n  \"language\": \"EN\",\n  \"apiKey\": \"SecureKey123\"\n}"
+            },
+            "url": {
+              "raw": "{{baseUrl}}/v1/billpayment/lookup",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "v1",
+                "billpayment",
+                "lookup"
+              ]
+            }
+          }
+        },
+        {
+          "name": "Inquiry Invalid Amount",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"functionName\": \"BillLookup\",\n  \"transactionId\": \"TXN-INQ-0005\",\n  \"transactionDateTime\": \"{{transactionDateTime}}\",\n  \"billerType\": \"\",\n  \"billerId\": \"98499\",\n  \"terminalNo\": \"xxxxxxx8888\",\n  \"channelCode\": \"MOB\",\n  \"tranAmount\": \"999.00\",\n  \"senderBankCode\": \"Kbank\",\n  \"reference1\": \"300000025751\",\n  \"reference2\": \"1733084\",\n  \"language\": \"EN\",\n  \"apiKey\": \"SecureKey123\"\n}"
+            },
+            "url": {
+              "raw": "{{baseUrl}}/v1/billpayment/lookup",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "v1",
+                "billpayment",
+                "lookup"
+              ]
+            }
+          }
+        },
+        {
+          "name": "Inquiry Other Merchant Error",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"functionName\": \"BillLookup\",\n  \"transactionId\": \"TXN-INQ-0006\",\n  \"transactionDateTime\": \"{{transactionDateTime}}\",\n  \"billerType\": \"\",\n  \"billerId\": \"98499\",\n  \"terminalNo\": \"xxxxxxx8888\",\n  \"channelCode\": \"MOB\",\n  \"tranAmount\": \"180.00\",\n  \"senderBankCode\": \"Kbank\",\n  \"reference1\": \"300000025754\",\n  \"reference2\": \"1733087\",\n  \"language\": \"EN\",\n  \"apiKey\": \"SecureKey123\"\n}"
+            },
+            "url": {
+              "raw": "{{baseUrl}}/v1/billpayment/lookup",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "v1",
+                "billpayment",
+                "lookup"
+              ]
+            }
+          }
+        },
+        {
+          "name": "Inquiry Info EN",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"functionName\": \"BillLookup\",\n  \"transactionId\": \"TXN-INQ-0007\",\n  \"transactionDateTime\": \"{{transactionDateTime}}\",\n  \"billerType\": \"\",\n  \"billerId\": \"98499\",\n  \"terminalNo\": \"xxxxxxx8888\",\n  \"channelCode\": \"MOB\",\n  \"tranAmount\": \"120.00\",\n  \"senderBankCode\": \"Kbank\",\n  \"reference1\": \"300000025755\",\n  \"reference2\": \"1733088\",\n  \"language\": \"EN\",\n  \"apiKey\": \"SecureKey123\"\n}"
+            },
+            "url": {
+              "raw": "{{baseUrl}}/v1/billpayment/lookup",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "v1",
+                "billpayment",
+                "lookup"
+              ]
+            }
+          }
+        },
+        {
+          "name": "Inquiry Info TH",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"functionName\": \"BillLookup\",\n  \"transactionId\": \"TXN-INQ-0008\",\n  \"transactionDateTime\": \"{{transactionDateTime}}\",\n  \"billerType\": \"\",\n  \"billerId\": \"98499\",\n  \"terminalNo\": \"xxxxxxx8888\",\n  \"channelCode\": \"MOB\",\n  \"tranAmount\": \"120.00\",\n  \"senderBankCode\": \"Kbank\",\n  \"reference1\": \"300000025756\",\n  \"reference2\": \"1733089\",\n  \"language\": \"TH\",\n  \"apiKey\": \"SecureKey123\"\n}"
+            },
+            "url": {
+              "raw": "{{baseUrl}}/v1/billpayment/lookup",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "v1",
+                "billpayment",
+                "lookup"
+              ]
+            }
+          }
+        },
+        {
+          "name": "Inquiry Ref1 only (return ref2 + amount)",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"functionName\": \"BillLookup\",\n  \"transactionId\": \"TXN-INQ-0009\",\n  \"transactionDateTime\": \"{{transactionDateTime}}\",\n  \"billerType\": \"\",\n  \"billerId\": \"98499\",\n  \"terminalNo\": \"xxxxxxx8888\",\n  \"channelCode\": \"MOB\",\n  \"tranAmount\": \"\",\n  \"senderBankCode\": \"Kbank\",\n  \"reference1\": \"REF1ONLY300001\",\n  \"reference2\": \"\",\n  \"language\": \"EN\",\n  \"apiKey\": \"SecureKey123\"\n}"
+            },
+            "url": {
+              "raw": "{{baseUrl}}/v1/billpayment/lookup",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "v1",
+                "billpayment",
+                "lookup"
+              ]
+            }
+          }
+        },
+        {
+          "name": "Inquiry Success PromptPay",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"functionName\": \"BillLookup\",\n  \"transactionId\": \"TXN-INQ-0010\",\n  \"transactionDateTime\": \"{{transactionDateTime}}\",\n  \"billerType\": \"PROMPTPAY\",\n  \"billerId\": \"98499\",\n  \"terminalNo\": \"xxxxxxx8888\",\n  \"channelCode\": \"MOB\",\n  \"tranAmount\": \"120.00\",\n  \"senderBankCode\": \"Kbank\",\n  \"reference1\": \"PP3000001\",\n  \"reference2\": \"PP1733081\",\n  \"language\": \"EN\",\n  \"apiKey\": \"SecureKey123\"\n}"
+            },
+            "url": {
+              "raw": "{{baseUrl}}/v1/billpayment/lookup",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "v1",
+                "billpayment",
+                "lookup"
+              ]
+            }
+          }
+        },
+        {
+          "name": "Inquiry Already Paid PromptPay",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"functionName\": \"BillLookup\",\n  \"transactionId\": \"TXN-INQ-0011\",\n  \"transactionDateTime\": \"{{transactionDateTime}}\",\n  \"billerType\": \"PROMPTPAY\",\n  \"billerId\": \"98499\",\n  \"terminalNo\": \"xxxxxxx8888\",\n  \"channelCode\": \"MOB\",\n  \"tranAmount\": \"120.00\",\n  \"senderBankCode\": \"Kbank\",\n  \"reference1\": \"PP3000002\",\n  \"reference2\": \"PP1733082\",\n  \"language\": \"EN\",\n  \"apiKey\": \"SecureKey123\"\n}"
+            },
+            "url": {
+              "raw": "{{baseUrl}}/v1/billpayment/lookup",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "v1",
+                "billpayment",
+                "lookup"
+              ]
+            }
+          }
+        },
+        {
+          "name": "Inquiry Other Merchant Error PromptPay",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"functionName\": \"BillLookup\",\n  \"transactionId\": \"TXN-INQ-0012\",\n  \"transactionDateTime\": \"{{transactionDateTime}}\",\n  \"billerType\": \"PROMPTPAY\",\n  \"billerId\": \"98499\",\n  \"terminalNo\": \"xxxxxxx8888\",\n  \"channelCode\": \"MOB\",\n  \"tranAmount\": \"120.00\",\n  \"senderBankCode\": \"Kbank\",\n  \"reference1\": \"PP3000003\",\n  \"reference2\": \"PP1733083\",\n  \"language\": \"EN\",\n  \"apiKey\": \"SecureKey123\"\n}"
+            },
+            "url": {
+              "raw": "{{baseUrl}}/v1/billpayment/lookup",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "v1",
+                "billpayment",
+                "lookup"
+              ]
+            }
+          }
+        }
+      ]
+    },
+    {
+      "name": "Payment",
+      "item": [
+        {
+          "name": "Payment Success",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"functionName\": \"BillPayment\",\n  \"transactionId\": \"TXN-PAY-0001\",\n  \"transactionDateTime\": \"{{transactionDateTime}}\",\n  \"billerType\": \"\",\n  \"billerId\": \"98499\",\n  \"terminalNo\": \"xxxxxxx8888\",\n  \"channelCode\": \"MOB\",\n  \"tranAmount\": \"120.00\",\n  \"senderBankCode\": \"Kbank\",\n  \"isRetry\": \"0\",\n  \"reference1\": \"300000025751\",\n  \"reference2\": \"1733084\",\n  \"language\": \"EN\",\n  \"apiKey\": \"SecureKey123\"\n}"
+            },
+            "url": {
+              "raw": "{{baseUrl}}/v1/billpayment/payment",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "v1",
+                "billpayment",
+                "payment"
+              ]
+            }
+          }
+        },
+        {
+          "name": "Payment Already Paid",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"functionName\": \"BillPayment\",\n  \"transactionId\": \"TXN-PAY-0002\",\n  \"transactionDateTime\": \"{{transactionDateTime}}\",\n  \"billerType\": \"\",\n  \"billerId\": \"98499\",\n  \"terminalNo\": \"xxxxxxx8888\",\n  \"channelCode\": \"MOB\",\n  \"tranAmount\": \"120.00\",\n  \"senderBankCode\": \"Kbank\",\n  \"isRetry\": \"0\",\n  \"reference1\": \"300000025753\",\n  \"reference2\": \"1733086\",\n  \"language\": \"EN\",\n  \"apiKey\": \"SecureKey123\"\n}"
+            },
+            "url": {
+              "raw": "{{baseUrl}}/v1/billpayment/payment",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "v1",
+                "billpayment",
+                "payment"
+              ]
+            }
+          }
+        },
+        {
+          "name": "Payment Invalid Amount",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"functionName\": \"BillPayment\",\n  \"transactionId\": \"TXN-PAY-0003\",\n  \"transactionDateTime\": \"{{transactionDateTime}}\",\n  \"billerType\": \"\",\n  \"billerId\": \"98499\",\n  \"terminalNo\": \"xxxxxxx8888\",\n  \"channelCode\": \"MOB\",\n  \"tranAmount\": \"999.00\",\n  \"senderBankCode\": \"Kbank\",\n  \"isRetry\": \"0\",\n  \"reference1\": \"300000025751\",\n  \"reference2\": \"1733084\",\n  \"language\": \"EN\",\n  \"apiKey\": \"SecureKey123\"\n}"
+            },
+            "url": {
+              "raw": "{{baseUrl}}/v1/billpayment/payment",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "v1",
+                "billpayment",
+                "payment"
+              ]
+            }
+          }
+        },
+        {
+          "name": "Payment Other Merchant Error",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"functionName\": \"BillPayment\",\n  \"transactionId\": \"TXN-PAY-0004\",\n  \"transactionDateTime\": \"{{transactionDateTime}}\",\n  \"billerType\": \"\",\n  \"billerId\": \"98499\",\n  \"terminalNo\": \"xxxxxxx8888\",\n  \"channelCode\": \"MOB\",\n  \"tranAmount\": \"180.00\",\n  \"senderBankCode\": \"Kbank\",\n  \"isRetry\": \"0\",\n  \"reference1\": \"300000025754\",\n  \"reference2\": \"1733087\",\n  \"language\": \"EN\",\n  \"apiKey\": \"SecureKey123\"\n}"
+            },
+            "url": {
+              "raw": "{{baseUrl}}/v1/billpayment/payment",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "v1",
+                "billpayment",
+                "payment"
+              ]
+            }
+          }
+        },
+        {
+          "name": "Payment Invalid Ref1",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"functionName\": \"BillPayment\",\n  \"transactionId\": \"TXN-PAY-0005\",\n  \"transactionDateTime\": \"{{transactionDateTime}}\",\n  \"billerType\": \"\",\n  \"billerId\": \"98499\",\n  \"terminalNo\": \"xxxxxxx8888\",\n  \"channelCode\": \"MOB\",\n  \"tranAmount\": \"120.00\",\n  \"senderBankCode\": \"Kbank\",\n  \"isRetry\": \"0\",\n  \"reference1\": \"INVALID_REF1\",\n  \"reference2\": \"1733084\",\n  \"language\": \"EN\",\n  \"apiKey\": \"SecureKey123\"\n}"
+            },
+            "url": {
+              "raw": "{{baseUrl}}/v1/billpayment/payment",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "v1",
+                "billpayment",
+                "payment"
+              ]
+            }
+          }
+        },
+        {
+          "name": "Payment Invalid Ref1 and Ref2",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"functionName\": \"BillPayment\",\n  \"transactionId\": \"TXN-PAY-0006\",\n  \"transactionDateTime\": \"{{transactionDateTime}}\",\n  \"billerType\": \"\",\n  \"billerId\": \"98499\",\n  \"terminalNo\": \"xxxxxxx8888\",\n  \"channelCode\": \"MOB\",\n  \"tranAmount\": \"120.00\",\n  \"senderBankCode\": \"Kbank\",\n  \"isRetry\": \"0\",\n  \"reference1\": \"INVALID_REF12\",\n  \"reference2\": \"X\",\n  \"language\": \"EN\",\n  \"apiKey\": \"SecureKey123\"\n}"
+            },
+            "url": {
+              "raw": "{{baseUrl}}/v1/billpayment/payment",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "v1",
+                "billpayment",
+                "payment"
+              ]
+            }
+          }
+        }
+      ]
+    },
+    {
+      "name": "Alias Endpoints",
+      "item": [
+        {
+          "name": "Bell Inquiry Success",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"functionName\": \"BillLookup\",\n  \"transactionId\": \"TXN-BELL-INQ-0001\",\n  \"transactionDateTime\": \"{{transactionDateTime}}\",\n  \"billerType\": \"\",\n  \"billerId\": \"98499\",\n  \"terminalNo\": \"xxxxxxx8888\",\n  \"channelCode\": \"MOB\",\n  \"tranAmount\": \"120.00\",\n  \"senderBankCode\": \"Kbank\",\n  \"reference1\": \"300000025751\",\n  \"reference2\": \"1733084\",\n  \"language\": \"EN\",\n  \"apiKey\": \"SecureKey123\"\n}"
+            },
+            "url": {
+              "raw": "{{baseUrl}}/bell/v1/billpayment/lookup",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "bell",
+                "v1",
+                "billpayment",
+                "lookup"
+              ]
+            }
+          }
+        },
+        {
+          "name": "Pang Payment Success",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"functionName\": \"BillPayment\",\n  \"transactionId\": \"TXN-PANG-PAY-0001\",\n  \"transactionDateTime\": \"{{transactionDateTime}}\",\n  \"billerType\": \"\",\n  \"billerId\": \"98499\",\n  \"terminalNo\": \"xxxxxxx8888\",\n  \"channelCode\": \"MOB\",\n  \"tranAmount\": \"120.00\",\n  \"senderBankCode\": \"Kbank\",\n  \"isRetry\": \"0\",\n  \"reference1\": \"300000025751\",\n  \"reference2\": \"1733084\",\n  \"language\": \"EN\",\n  \"apiKey\": \"SecureKey123\"\n}"
+            },
+            "url": {
+              "raw": "{{baseUrl}}/pang/v1/billpayment/payment",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "pang",
+                "v1",
+                "billpayment",
+                "payment"
+              ]
+            }
+          }
+        }
+      ]
+    }
+  ]
+}
