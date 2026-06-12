@@ -12,7 +12,7 @@
     },
     {
       "key": "transactionDateTime",
-      "value": "2026-06-11T10:33:18.450+07:00"
+      "value": "2026-06-12T10:33:18.450+07:00"
     }
   ],
   "item": [
@@ -61,8 +61,8 @@
               "raw": "{\n  \"functionName\": \"BillLookup\",\n  \"transactionId\": \"TXN-INQ-0002\",\n  \"transactionDateTime\": \"{{transactionDateTime}}\",\n  \"billerType\": \"\",\n  \"billerId\": \"98499\",\n  \"terminalNo\": \"xxxxxxx8888\",\n  \"channelCode\": \"MOB\",\n  \"tranAmount\": \"120.00\",\n  \"senderBankCode\": \"Kbank\",\n  \"reference1\": \"300000025753\",\n  \"reference2\": \"1733086\",\n  \"language\": \"EN\",\n  \"apiKey\": \"SecureKey123\"\n}"
             },
             "url": {
-              "raw": "{{baseUrl}}/v1/billpayment/lookup",
-              "host": [
+                  "reference1": "300000025751",
+                  "reference2": "1733084",
                 "{{baseUrl}}"
               ],
               "path": [
@@ -556,10 +556,12 @@
             "body": {
               "mode": "raw",
               "raw": "{\n  \"functionName\": \"BillPayment\",\n  \"transactionId\": \"TXN-PANG-PAY-0001\",\n  \"transactionDateTime\": \"{{transactionDateTime}}\",\n  \"billerType\": \"\",\n  \"billerId\": \"98499\",\n  \"terminalNo\": \"xxxxxxx8888\",\n  \"channelCode\": \"MOB\",\n  \"tranAmount\": \"120.00\",\n  \"senderBankCode\": \"Kbank\",\n  \"isRetry\": \"0\",\n  \"reference1\": \"300000025751\",\n  \"reference2\": \"1733084\",\n  \"language\": \"EN\",\n  \"apiKey\": \"SecureKey123\"\n}"
+    \"reference1\": \"300000025752\",
+    \"reference2\": \"1733085\",
             },
             "url": {
-              "raw": "{{baseUrl}}/pang/v1/billpayment/payment",
-              "host": [
+  \"reference1\": \"300000025752\",
+              \"reference2\": \"1733085\",
                 "{{baseUrl}}"
               ],
               "path": [

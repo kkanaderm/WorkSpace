@@ -10,9 +10,22 @@ app = FastAPI(title="KBank BillPayment API", version="1.0.0")
 
 # Mock data for inquiry/lookup. Replace this with real database queries in production.
 LOOKUP_DATA = {
-    ("300000025751", "1733084"): {
+    ("300000025753", "1733086"): {
         "tranAmount": "120.00",
-        "isPaid": False,
+        "isPaid": True,
+        ("300000025751", "1733084"): {
+            "tranAmount": "120.00",
+            "isPaid": True,
+            "terminalNo": "xxxxxxx8888",
+            "billerType": "",
+            "info1": "",
+            "info2": "",
+            "info3": "",
+            "duedate": "",
+            "rtpReference": "",
+            "isPromptpay": False,
+            "merchantError": False,
+        },
         "terminalNo": "xxxxxxx8888",
         "billerType": "",
         "info1": "",
@@ -24,22 +37,8 @@ LOOKUP_DATA = {
         "merchantError": False,
     },
     ("300000025752", "1733085"): {
-        "tranAmount": "250.00",
-        "isPaid": False,
-        "terminalNo": "xxxxxxx8888",
-        "billerType": "",
-        "info1": "",
-        "info2": "",
-        "info3": "",
-        "duedate": "",
-        "rtpReference": "",
-        "isPromptpay": False,
-        "merchantError": False,
-    },
-    # Inquiry Already Paid case
-    ("300000025753", "1733086"): {
         "tranAmount": "120.00",
-        "isPaid": True,
+        "isPaid": False,
         "terminalNo": "xxxxxxx8888",
         "billerType": "",
         "info1": "",
