@@ -212,8 +212,16 @@ class BillPaymentRequest(BaseModel):
     @field_validator("transactionDateTime")
     @classmethod
     def validate_transaction_datetime_today(cls, value: datetime) -> datetime:
-        current_date = datetime.now(value.tzinfo).date() if value.tzinfo else datetime.now().date()
-        if value.date() != current_date:
+        # Convert both to UTC for proper date comparison regardless of timezone
+        from datetime import timezone as tz
+        if value.tzinfo is None:
+            # Assume UTC if no timezone info
+            value_utc = value.replace(tzinfo=tz.utc)
+        else:
+            value_utc = value.astimezone(tz.utc)
+        
+        now_utc = datetime.now(tz.utc)
+        if value_utc.date() != now_utc.date():
             raise ValueError("transactionDateTime must be today")
         return value
 
@@ -290,8 +298,16 @@ class BillLookupRequest(BaseModel):
     @field_validator("transactionDateTime")
     @classmethod
     def validate_transaction_datetime_today(cls, value: datetime) -> datetime:
-        current_date = datetime.now(value.tzinfo).date() if value.tzinfo else datetime.now().date()
-        if value.date() != current_date:
+        # Convert both to UTC for proper date comparison regardless of timezone
+        from datetime import timezone as tz
+        if value.tzinfo is None:
+            # Assume UTC if no timezone info
+            value_utc = value.replace(tzinfo=tz.utc)
+        else:
+            value_utc = value.astimezone(tz.utc)
+        
+        now_utc = datetime.now(tz.utc)
+        if value_utc.date() != now_utc.date():
             raise ValueError("transactionDateTime must be today")
         return value
 
