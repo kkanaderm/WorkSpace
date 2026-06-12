@@ -400,6 +400,10 @@ def bill_payment(request: BillPaymentRequest) -> BillPaymentResponse:
                 terminalNo=record["terminalNo"],
             )
 
+        # Persist paid status so subsequent inquiry with the same references
+        # can return the "Already paid" response for exercise validation.
+        record["isPaid"] = True
+
         return BillPaymentResponse(
             transactionId=request.transactionId,
             responseDateTime=response_datetime,
@@ -513,7 +517,7 @@ def bill_lookup(request: BillLookupRequest) -> BillLookupResponse:
                 transactionId=request.transactionId,
                 transactionDateTime=response_datetime,
                 billerTransactionId=request.transactionId,
-                responseCode="1003",
+                responseCode="0002",
                 responseDescription="Already paid",
                 billerType=record["billerType"],
                 billerId=request.billerId,
